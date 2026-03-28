@@ -7,7 +7,7 @@ type ConcertParams = {
 };
 
 const Concert = async ({ params }: { params: ConcertParams }) => {
-    const concertParams = await params;
+    const concertParams = params;
     const id = concertParams.id;
     const date = concertParams.date;
     const quantity = concertParams.quantity;
