@@ -1,24 +1,24 @@
 import ConcertDetails from "../_components/ConcertDetails";
 
-type ConcertParams = {
-    id: string;
-    date: string;
-    quantity: number
-};
+//receive params from url,
+const Concert = async ({
+    params,
+    searchParams
+}: {
+    params: Promise<{ id: string }>,
+    searchParams: Promise<{ date: string }>
+}) => {
+    //await params
+    const { id } = await params;
+    const { date } = await searchParams;
 
-const Concert = async ({ params }: { params: ConcertParams }) => {
-    const concertParams = params;
-    const id = concertParams.id;
-    const date = concertParams.date;
-    const quantity = concertParams.quantity;
-
+    //setting info from params to object
     const concert = {
         id: id,
         date: date,
-        quantity: quantity
-
     }
 
+    //pass concert values to <ConcertDetails> for rendering.
     return (
         <>
             <ConcertDetails concert={concert}></ConcertDetails>
