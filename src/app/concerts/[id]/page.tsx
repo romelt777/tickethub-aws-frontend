@@ -2,8 +2,8 @@ import ConcertDetails from "../_components/ConcertDetails";
 
 //receive params from url,
 const Concert = async ({
-    params,
-    searchParams
+    params, //path parameters [id], 
+    searchParams // query parameters/ after ? 
 }: {
     params: Promise<{ id: string }>,
     searchParams: Promise<{ date: string }>

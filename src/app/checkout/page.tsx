@@ -1,19 +1,24 @@
 import { Suspense } from 'react';
 import CheckoutForm from './_components/CheckoutForm';
-import { ConcertDetailsType } from '@/types/concert';
 
-const Checkout = async (params: ConcertDetailsType) => {
+//using query paramters 
+const Checkout = async ({
+    searchParams
+}: {
+    searchParams: Promise<{ id: string, date: string, quantity: string }>
+}
 
-    const id = params.id;
-    const quantity = params.quantity;
-    const date = params.date;
+) => {
+    const { id, date, quantity } = await searchParams;
+
+    //saving query parameters to object
     const concertInfo = {
         id: id,
-        quantity: quantity,
+        quantity: Number(quantity),
         date: date
     }
 
-
+    //passing concert info to checkoutForm component
     return (
         <div>
             <Suspense fallback={<p>Loading checkout form...</p>}>
