@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, createContext } from 'react';
-import { useSearchParams, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import FormInput from './FormInput';
 import DotsLoader from '@/components/DotsLoader';
 import { ConcertDetailsType } from '@/types/concert';
@@ -11,38 +11,21 @@ import { formSubmit } from '@/app/actions';
 //creating context for errors
 const ErrorContext = createContext({});
 
+//using concertinfo passed down from parent component (checkout/page.tsx)
 const CheckoutForm = ({ concertInfo }: { concertInfo: ConcertDetailsType }) => {
     //router for redirecting
     const router = useRouter();
 
-    const searchParams = useSearchParams();
-    const id = searchParams.get('id');
-    const quantity = Number(searchParams.get('quantity'));
-
-
-
     //hold all data from the form fields
     const [formData, setFormData] = useState({
-        id: id!, email: '',
+        id: concertInfo.id, email: '',
         name: '', phone: '',
-        quantity: quantity!, creditCard: '',
+        quantity: concertInfo.quantity, creditCard: '',
         expirationDate: '', securityCode: '',
         address: '', city: '',
         province: '', postalCode: '',
         country: ''
     });
-
-    // const searchParams = useSearchParams();
-    // useEffect(() => {
-    //     const id = searchParams.get('id');
-    //     const quantity = searchParams.get('quantity');
-
-    //     setFormData((prev) => ({
-    //         ...prev,
-    //         id: id || '',
-    //         quantity: Number(quantity) || 0,
-    //     }));
-    // }, [searchParams]);
 
     type ApiResponse = string | { errors: string[] };
 
