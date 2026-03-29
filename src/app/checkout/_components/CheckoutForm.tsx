@@ -29,7 +29,6 @@ const CheckoutForm = ({ concertInfo }: { concertInfo: ConcertDetailsType }) => {
 
     type ApiResponse = string | { errors: string[] };
 
-
     //hold the response from the api to display on webpage
     const [apiResponse, setApiResponse] = useState<ApiResponse | null>(null);
 
