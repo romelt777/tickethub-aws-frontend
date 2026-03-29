@@ -4,7 +4,7 @@ This is the Next.js frontend for TicketHub.
 It allows users to submit support tickets to the serverless backend.
 
 For the full project:
-- https://github.com/romelt777/tickethub
+- https://github.com/romelt777/tickethub-aws
 
 ## Live Demo
 https://tickethub-aws-frontend.vercel.app/
